@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			* {
+				margin: auto;
+				padding: auto;
+			}
+			
+			#BIG {
+				width: 580px;
+				height: auto;
+				margin: auto;
+				border: 2px double blue;
+			}
+			
+			#input_name_sex {
+				width: 580px;
+				height: auto;
+				font-size: 25px;
+			}
+			
+			table {
+				border-collapse: collapse;
+				border: 2px double black;
+				margin: 5px auto;
+			}
+			
+			td {
+				width: 120px;
+				height: auto;
+				border-collapse: collapse;
+				border: 2px solid lightgrey;
+				text-align: center;
+			}
+			
+			.VVV {
+				color: blue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script>
+			function capture(data) {
+				//console.log(data.id);
+				var fa = data.parentNode.parentNode;
+				fa.parentNode.removeChild(fa);
+			}
+
+			function changecolor1(ss) {
+				//console.log(ss);
+				//console.log(ss.style);
+				//console.log(ss.style.color);
+				//console.log(ss.style.color);
+				ss.style.color = "blue";
+				//console.log(ss.style.color);
+			}
+
+			function changecolor2(ss) {
+				ss.style.color = "black";
+			}
+			window.onload = function() {
+				var input_botton = document.getElementById("input");
+				var count = 0;
+				input_botton.onclick = function() {
+					count++;
+					var name = document.getElementById("name").value;
+					var sexs = document.getElementsByName("radio");
+					var table = document.getElementById("table");
+					var sex;
+					for(var i = 0; i <= 1; ++i) {
+						if(sexs[i].checked == true) {
+							if(sexs[i].value == 0) sex = "男";
+							else sex = "女";
+							break;
+						}
+					}
+					var x = document.createElement("tr");
+					x.innerHTML = "<td>" + count + "</td>" + "<td id='zz" + count + "' onmouseover='changecolor1(this)' onmouseout='changecolor2(this)'>" + name + "</td>" + "<td>" + sex + "</td>" +
+						"<td><a id='XX" + count + "' href='#' onclick='capture(this);'>删除</a></td>";
+					table.appendChild(x);
+					//var ss="XX"+count;
+					//var now_ss=document.getElementById("ss");
+					//console.log(now_ss);
+					//work(ss);
+					//console.log(sex);
+				}
+
+			}
+		</script>
+		<div id="BIG">
+			<div id="input_name_sex">
+				<center>
+					<span> 姓名：</span>
+					<input type="text" id="name" />
+					<span> 性别：</span> 
+					男<input name="radio" type="radio" value="0" /> 
+					女<input name="radio" type="radio" value="1" />
+					<button id="input">添加条</button>
+				</center>
+			</div>
+			<table id="table">
+				<tr>
+					<td>编号</td>
+					<td>姓名</td>
+					<td>性别</td>
+					<td>操作</td>
+				</tr>
+			</table>
+		</div>
+
+	</body>
+
+</html>
