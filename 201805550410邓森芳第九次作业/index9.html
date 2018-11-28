@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>图片可任意拖动并带有滑动效果的JS特效</title>
+<link type="text/css" rel="stylesheet" href="css/lanrenzhijia.css" media="screen" />
+</head>
+<body>
+<div id="container">
+  <h1>Click on an image below to view it!</h1>
+  <ul id="images">
+    <li>
+      <div> <a href="3dOcean.htm"><img alt="3dOcean" src="images/01.jpg" width="280px" height="160px"/></a> </div>
+    </li>
+    <li>
+      <div> <a href="AudioJungle.htm"><img alt="AudioJungle" src="images/02.jpg" width="280px" height="160px"/></a> </div>
+    </li>
+    <li>
+      <div> <a href="ActiveDen.htm"><img alt="ActiveDen" src="images/03.jpg" width="280px" height="160px"/></a> </div>
+    </li>
+    <li>
+      <div> <a href="GraphicRiver.htm"><img alt="GraphicRiver" src="images/04.jpg" width="280px" height="160px"/></a> </div>
+    </li>
+    <li>
+      <div> <a href="ThemeForest.htm"><img alt="ThemeForest" src="images/05.jpg" width="280px" height="160px"/></a> </div>
+    </li>
+    <li>
+      <div> <a href="VideoHive.htm"><img alt="VideoHive" src="images/c.jpg" width="280px" height="160px"/></a> </div>
+    </li>
+  </ul>
+</div>
+<script src='http://www.lanrenzhijia.com/ajaxjs/1.3.2/jquery-1.3.2.min.js'></script>
+<script src='js/jqueryui-core-drag.js'></script>
+<script type="text/javascript">		
+//*	
+	var imgs;
+		
+	$(document).ready(function () {
+	var drag = {};
+		$('h1').remove();
+		$('#images').append('<li id="instructions"><h4>Toss the images around; if you see one you like, click on it!</h4></li>');
+		
+		imgs = $("#images li");
+
+		imgs.draggable({ 
+			stack : { group : '#images li', min : 1},
+			start : function () {
+				$this = $(this);
+				if($this.attr('id') === 'instructions') { $this.fadeOut().remove(); }
+				
+				imgs.each(function () {
+					var $this = $(this);
+					if($this.width() !== 256) {
+						$this.stop().animate({width : 256 }).removeClass('top');
+					}
+				});
+				
+				drag.startTime = new Date();
+				drag.startPos = $this.position();
+			},
+			stop : function () {
+				var $this = $(this), top, left, time;
+				drag.endTime = new Date();
+				drag.endPos = $this.position();
+				drag.leftOffset = drag.endPos.left - drag.startPos.left;
+				drag.topOffset  = drag.endPos.top  - drag.startPos.top;
+
+				time = (drag.endTime.getTime() - drag.startTime.getTime()) /60;
+				
+				top  = (drag.topOffset / time).toString();
+				left = (drag.leftOffset / time).toString();
+				
+				$this.animate({
+					top : '+=' + top, 
+					left: '+=' + left 
+				});
+			}
+		});
+
+		imgs.click(function () {
+			var $this = $(this);
+		
+			if ($this.attr('id') == 'instructions') {
+				$this.fadeOut().remove();
+			}
+			else {
+				if($this.width() !== 256) {
+					$this.stop().animate({width : 256 }).removeClass('top');
+				}
+				else {
+					if (!($this.find('.info').length)) {
+						$.ajax({
+							url : $this.find('a').attr('href'),
+							dataType : 'html',
+							success : function (data) {
+								var $d = $(data),
+									head = $d.filter('h1'),
+									para = $d.filter('p');
+									
+								$this.children('div').append('<div class="info"></div>').find(".info").append(head, para);
+							},
+							error : function () {
+								var msg = '<h1>Oops!</h1><p>It looks like there been a problem; we can\'t get this info right now.</p>';
+								$this.children('div').append('<div class="info"></div>').find(".info").html(msg);
+							}
+						});
+					}
+					$this.css({'zIndex' :8 })
+							 .stop()
+							 .animate({ width : 512})
+							 .addClass('top')
+								.siblings().removeClass('top')
+										   .stop()
+										   .animate({width : 256})
+												.filter(function () { return $(this).css('zIndex') >= '8' }).css({'zIndex' : 7});
+				}
+			}
+			return false;
+		});
+		
+	});
+
+$(window).load(function () {
+	$w = $(window);
+	imgs.css({
+			position : 'absolute',
+			left : $w.width() / 2 - imgs.width(),
+			top  : $w.height() / 2- imgs.height()
+		});
+	for(var i = 0; imgs[i]; i++ ) {
+		$(imgs[i]).animate({
+				left : '+=' + Math.random()*150,
+				top  : '+=' + Math.random()*150
+			});
+	}
+});//*/
+</script>
+</body>
+</html>
