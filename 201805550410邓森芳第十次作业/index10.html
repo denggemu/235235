@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>我的职业规划</title>
+		<link href="css/reset.css" rel="stylesheet" type="text/css" />
+		<link href="css/common.css" rel="stylesheet" type="text/css" />
+		<link href="css/facets3.css" rel="stylesheet" type="text/css" />
+		<link href="css/menu.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/lanrenzhijia.js"></script>
+		<script type="text/javascript" src="js/jquery.clip.js"></script>
+		<script type="text/javascript" src="js/jquery.facets.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#main-image-box').children().removeClass('facets').end().facets({
+					control: 'ul#mainlevel',
+					clipSpacing: 1,
+					animationSpeed: 400,
+					beforeMax: function(index) {
+						$('#main-image-box .clip:eq(' + index + ') .container').show();
+					},
+					beforeMin: function(index) {
+						$('#main-image-box .clip:eq(' + index + ') .container').hide();
+					}
+				});
+			});
+		</script>
+		
+		<style>
+			
+			body{
+				
+				margin: auto;
+				width: 960px;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+	
+	<center><h1>我的职业计划书</h1></center>
+	
+	<hr />
+		<div id="container" style="width:1000px">
+			<div>
+				<div class="demo-description" style="margin-bottom:10px;float:right;width:275px;">
+					<h2>我的未来不是梦</h2>
+					<p><strong>小迷茫的我   </strong>未来闪得璀璨，而我却不时的失去方向，不时的看不清前方；也许这一刻晕乎乎，如此的我，记下了如此的理想</p>
+					<p><strong>我知道我也还是会   </strong>点滴成永恒，坚持，梦想才会照亮现实</p>
+					<p><strong>之后会坚持   </strong>我笨一些，但我很努力</p>
+					<p><strong>我以为的成功   </strong>能走着自己的路，舒心的过着每一天</p>
+				</div>
+				<div id="navigation-panel">
+					<div class="menu">
+						<ul class="menu" id="mainlevel">
+							<li>
+								<a href="#">简介
+									<!--[if gte IE 7]><!-->
+								</a>
+								<!--<![endif]-->
+								<!--[if lte IE 6]><table><tr><td><![endif]-->
+								<ul>
+									<li>
+										<a href="index10.1.html">介绍</a>
+									</li>
+								</ul>
+								<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+							</li>
+							<li>
+								<a href="#">背景及预测
+									<!--[if gte IE 7]><!-->
+								</a>
+								<!--<![endif]-->
+								<!--[if lte IE 6]><table><tr><td><![endif]-->
+								<ul>
+									<li>
+										<a href="index10.2.html">模糊一点</a>
+									</li>
+									<li>
+										
+									</li>
+								</ul>
+								<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+							</li>
+							<li>
+								<a href="#">目的
+									<!--[if gte IE 7]><!-->
+								</a>
+								<!--<![endif]-->
+								<!--[if lte IE 6]><table><tr><td><![endif]-->
+								<ul>
+									<li>
+										<a href="index10.3.html">简单说</a>
+									</li>
+								</ul>
+								<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+							</li>
+							<li>
+								<a href="#">宣传1
+									<!--[if gte IE 7]><!-->
+								</a>
+								<!--<![endif]-->
+								<!--[if lte IE 6]><table><tr><td><![endif]-->
+								<ul>
+									<li>
+										<a href="index10.4.html">更多</a>
+									</li>
+									
+								</ul>
+								<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+							</li>
+							<li class="last">
+								<a href="#">宣传2
+									<!--[if gte IE 7]><!-->
+								</a>
+								<!--<![endif]-->
+								<!--[if lte IE 6]><table><tr><td><![endif]-->
+								<ul>
+									<li>
+										<a href="index10.5.html">更多</a>
+									</li>
+								</ul>
+								<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+							</li>
+						</ul>
+					</div>
+					<div id="main-image-box">
+						<div class="clip facets" id="strand">
+							<div class="container">
+								<h1><span>1 Woche</span> Malediven</h1>
+								
+							</div>
+						</div>
+						<div class="clip facets" id="wintersport">
+							
+						</div>
+						<div class="clip facets" id="kreuzfahrt">
+							
+						</div>
+						<div class="clip facets" id="staedte">
+							<div class="container">
+								
+							</div>
+						</div>
+						<div class="clip facets" id="abenteuer">
+							<div class="container">
+								<h1><span>3 Wochen Abenteuer im</span> Grand Canyon</h1>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+
+</html>
